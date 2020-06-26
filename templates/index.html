@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Flack</title>
+    <link rel="stylesheet" href="/static/stylesheets/master.css">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> -->
+    <script src="/static/scripts/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+    <script src="/static/scripts/main.js"></script>
+  </head>
+  <body>
+    <div id="main-container">
+      <div id="left-col">
+        <div id="title">
+          <h1>flack.</h1>
+        </div>
+        <div id="left-inner">
+          <div id="channels" style="display: none;">
+            <div style="font-size: 16px; padding: 0; margin: 20px;"><br><h2>Channels</h2></div>
+            <div id="channel-select">
+            </div>
+          </div>
+          <div style="font-size: 16px; padding: 0; margin: 20px;"><br><h2 id="user-list">Existing Users</h2></div>
+          <div id="existing-users">
+          </div>
+          <br>
+        </div>
+      </div>
+      <div class="card" id="newUserForm">
+        <div id="hamburgerIntro">
+          <a href="#" onclick="openMenu();return false;" alt="">
+            <svg viewBox="0 0 100 80" width="30" height="30" style="padding-left: 10px; padding-right: 10px; padding-top:15px">
+              <rect width="100" height="20" rx="8" style="fill: #999;"></rect>
+              <rect y="30" width="100" height="20" rx="8" style="fill: #999;"></rect>
+              <rect y="60" width="100" height="20" rx="8" style="fill: #999;"></rect>
+            </svg>
+          </a>
+        </div>
+        <!-- <br style="line-height: 2vh;"> -->
+        <span id="right-title" onclick="closeMenu();"><h2>New user?</h2></span>
+        <form autocomplete="off" id="displayNameForm" method="post" onclick="closeMenu();">
+          <div class="form-group" id="form-group">
+            <label for="displayName"><b>Display name:</b></label><br>
+            <input type="text" id="displayName" placeholder="Display Name"><br>
+            <input type="submit" id="submit-btn" value="Submit">
+          </div>
+        </form>
+        <div id="message-box">
+          <div id="channel-overlay" style="display: none;">
+            <div id="create-channel-strip">
+              <input id="new-channel-name" type="text" onsubmit="createChannel()"><span id="create-channel-btn" onclick="createChannel()">Create Channel</span>
+            </div>
+          </div>
+          <div id="message-box-header">
+            <span id="small-screen-ele">
+              <a href="#" onclick="openMenu();return false;" alt="">
+                <svg viewBox="0 0 100 80" width="30" height="30" style="padding-left: 20px; padding-right: 15px; padding-top:20px">
+                  <rect width="100" height="20" rx="8" style="fill: #999;"></rect>
+                  <rect y="30" width="100" height="20" rx="8" style="fill: #999;"></rect>
+                  <rect y="60" width="100" height="20" rx="8" style="fill: #999;"></rect>
+                </svg>
+              </a>
+            </span>
+            <span id="info" onclick="closeMenu();">
+            </span>
+          </div>
+          <div id="messages" onclick="closeMenu();">
+
+          </div>
+          <br>
+          <iframe name="jugad" style="display:none;"></iframe>
+          <form id="send-message" onsubmit="sendMessage()" target="jugad" onclick="closeMenu();">
+            <textarea id="new-message" type="text" placeholder="Type message" style="resize: none;" onkeyup="sizeCheck()" onkeydown="sizeCheck()" autofocus></textarea>
+            <input id="send-btn" type="submit" name="" value="Send" disabled>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script> -->
+  </body>
+</html>
